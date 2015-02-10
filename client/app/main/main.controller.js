@@ -3,6 +3,7 @@
 angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
     $scope.awesomeThings = [];
+    $scope.data = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
@@ -24,4 +25,11 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
+
+    $scope.getStudents = function() {
+      $http.get('/api/student').success(function (student) {
+        $scope.data = student;
+      });
+    };
+    $scope.getStudents();
   });
