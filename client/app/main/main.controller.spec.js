@@ -22,14 +22,10 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of things to the scope', function () {
-    $httpBackend.flush();
-    expect(scope.awesomeThings.length).toBe(4);
-  });
 
-  it('should calculate a students GPA based on their class grades and class credits', function () {
-    expect(scope.calculateGPA()).toBe(4);
-  });
+ // it('should calculate a students GPA based on their class grades and class credits', function () {
+ //   expect(scope.calculateGPA()).toBe(4);
+ // });
 
   it('should convert a grade letter to a credit value', function () {
     expect(scope.letterToNum("A")).toBe(4);
