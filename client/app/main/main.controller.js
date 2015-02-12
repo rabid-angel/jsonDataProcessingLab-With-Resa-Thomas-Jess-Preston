@@ -25,11 +25,27 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
-
+///
     $scope.getStudents = function() {
       $http.get('/api/student').success(function (student) {
         $scope.data = student;
       });
     };
     $scope.getStudents();
+///
+
+    $scope.calculateGPA = function(student){
+      if (array.length == 0) {
+        return 0;
+      }
+      var pointsEarned = 0;
+      var totalCredits = 0;
+      for (var index = 0; index < student.courses.length; index++) {
+        var course = student[index];
+        pointsEarned += course.credits * $scope.letterToNum(course.grade);
+        totalCredits += course.credits;
+      }
+      return pointsEarned/totalCredits;
+    }
+
   });
