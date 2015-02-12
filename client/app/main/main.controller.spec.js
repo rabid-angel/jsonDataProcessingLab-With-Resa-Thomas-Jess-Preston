@@ -26,4 +26,8 @@ describe('Controller: MainCtrl', function () {
     $httpBackend.flush();
     expect(scope.awesomeThings.length).toBe(4);
   });
+
+  it('should calculate a students GPA based on their class grades and class credits', function () {
+    expect(scope.calculateGPA()).toBe(4);
+  });
 });
