@@ -3,7 +3,7 @@
 angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
     $scope.awesomeThings = [];
-    $scope.data = [];
+    $scope.localData = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
@@ -25,25 +25,26 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
-///
+//////
     $scope.getStudents = function() {
       $http.get('/api/student').success(function (student) {
-        $scope.data = student;
+        $scope.localData = student;
       });
     };
     $scope.getStudents();
-///
+//////
 
     $scope.calculateGPA = function(student){
+     var studentCourses = student.courses;
       if (array.length == 0) {
         return 0;
       }
       var pointsEarned = 0;
       var totalCredits = 0;
-      for (var index = 0; index < student.courses.length; index++) {
-        var course = student[index];
-        pointsEarned += course.credits * $scope.letterToNum(course.grade);
-        totalCredits += course.credits;
+      for (var index = 0; index < studentCourses.length; index++) {
+        var courseInList = studentCourses[index];
+        pointsEarned += courseInList.course.credits * $scope.letterToNum(courseInList.grade);
+        totalCredits += courseInList.course.credits;
       }
       return pointsEarned/totalCredits;
     }

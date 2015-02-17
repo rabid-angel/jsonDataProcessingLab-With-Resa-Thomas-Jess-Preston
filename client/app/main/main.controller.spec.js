@@ -23,6 +23,64 @@ describe('Controller: MainCtrl', function () {
   }));
 
 
+
+
+  //////////Student's for Testing//////////
+  var theOneClassAStudent = {
+    "firstName": "Love",
+    "lastName": "Roberts",
+    "dateOfBirth": "1989-01-18",
+    "gender": "male",
+    "email": "loveroberts@eweville.com",
+    "phone": "+1 (875) 519-3316",
+    "address": "562 Eastern Parkway, Crayne, Virginia, 5152",
+    "courses": [
+      {
+        "course": {
+          "name": "Models of Computing Systems",
+          "subject": "CSCI",
+          "courseNumber": 3401,
+          "credits": 4
+        },
+        "grade": "A"
+      }]};
+
+  var theTwoClassStudent = {
+    "firstName": "Love",
+    "lastName": "Roberts",
+    "dateOfBirth": "1989-01-18",
+    "gender": "male",
+    "email": "loveroberts@eweville.com",
+    "phone": "+1 (875) 519-3316",
+    "address": "562 Eastern Parkway, Crayne, Virginia, 5152",
+    "courses": [
+      {
+        "course": {
+          "name": "Models of Computing Systems",
+          "subject": "CSCI",
+          "courseNumber": 3401,
+          "credits": 4
+        },
+        "grade": "A"
+      },
+      {
+        "course": {
+          "name": "Software Design and Development",
+          "subject": "CSCI",
+          "courseNumber": 3601,
+          "credits": 4
+        },
+        "grade": "D"
+      }]};
+
+
+
+
+  /////////////////////////////////////////
+
+
+
+
  // it('should calculate a students GPA based on their class grades and class credits', function () {
  //   expect(scope.calculateGPA()).toBe(4);
  // });
@@ -43,24 +101,15 @@ describe('Controller: MainCtrl', function () {
 
 //Tests for CalculateGPA
 
+  //These tests are taking in student arrays that were defined at the top of the page
   it('these results should yield 4.0', function(){
-    var theArray = [{class: "TheBestClass", credits: 4, grade: "A"}, {class: "TheSecondBestClass", credits: 2, grade: "a"}];
-    expect(scope.calculateGPA(theArray)).toBeCloseTo(4.0, 2); // This makes sure we have 2 decimal points of precision.
+
+    expect(scope.calculateGPA(theOneClassAStudent)).toBeCloseTo(4.0, 2); // This makes sure we have 2 decimal points of precision.
   })
 
-  it('these results should yield 2.56', function(){
-    var theArray = [{class: "TheThirdClass", credits: 4, grade: "A"}, {class: "TheFourthBestClass", credits: 4, grade: "a"}, {class: "TheWorstClass", credits: 5, grade: "F"}, {class: "TheSecondBestClass", credits: 3, grade: "b"}];
-    expect(scope.calculateGPA(theArray)).toBeCloseTo(2.56, 2);
-  })
+  it('these results should yield 2.0', function(){
 
-  it('these results should yield 2.9', function(){
-    var theArray = [{class: "TheClass", credits: 1, grade: "d"}, {class: "TheFourthClass", credits: 4, grade: "C"}, {class: "TheWorst", credits: 5, grade: "A"}];
-    expect(scope.calculateGPA(theArray)).toBeCloseTo(2.9, 2);
-  })
-
-  it('these results should yield 0', function(){
-    var theArray = [];
-    expect(scope.calculateGPA(theArray)).toBeCloseTo(0, 5);
+    expect(scope.calculateGPA(theTwoClassStudent)).toBeCloseTo(2, 2);
   })
 
 });
