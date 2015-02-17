@@ -1,35 +1,6 @@
 'use strict';
 
 angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
-  .controller('IndividualCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
-    $scope.data = [];
-
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
-
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
-
-    $scope.getStudents = function() {
-      $http.get('/api/student').success(function (student) {
-        $scope.data = student;
-      });
-    };
-    $scope.getStudents();
+  .controller('IndividualCtrl', function ($scope) {
+    $scope.message = 'Hello';
   });
