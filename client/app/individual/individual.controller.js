@@ -39,7 +39,7 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
       }
     }
     $scope.getMajors = function(){
-      if($scope.individual.major2 !== null ){
+      if(angular.isDefined($scope.individual.major2) && $scope.individual.major2 !== null ){
         return $scope.individual.major1+", "+$scope.individual.major2;
       }
       return $scope.individual.major1;
