@@ -4,15 +4,15 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
   .controller('MainCtrl',[$scope, $filter, function ($scope, $filter, $http, socket) {
     var orderBy = $filter('orderBy');
     $scope.awesomeThings = [];
-    $scope.data = [];
+    $scope.localData = [];
     $scope.order = function(predicate, reverse){
-      $scope.data = orderBy($scope.data, predicate, reverse);
+      $scope.localData = orderBy($scope.localData, predicate, reverse);
     };
     $scope.order('lastName', false);
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
+    //$http.get('/api/things').success(function(awesomeThings) {
+    //  $scope.awesomeThings = awesomeThings;
+    //  socket.syncUpdates('thing', $scope.awesomeThings);
+    //});
 
 
     $scope.addThing = function() {

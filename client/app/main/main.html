@@ -2,8 +2,8 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+    <h1>Student Database</h1>
+    <p class="lead">Helping you creep on your students since 2015!</p>
     <img src="assets/images/yeoman.png" alt="I'm Yeoman">
   </div>
 </header>
@@ -17,47 +17,51 @@
       </ul>
     </div>
   </div>
-
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
 </div>
 
+  <!--<form class="thing-form">-->
+    <!--<label>Syncs in realtime across clients</label>-->
+    <!--<p class="input-group">-->
+      <!--<input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">-->
+      <!--<span class="input-group-btn">-->
+        <!--<button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>-->
+      <!--</span>-->
+    <!--</p>-->
+  <!--</form>-->
+<!--</div>-->
 
 
-<div ng-controller="main.controller">
-  <pre>Sorting predicate = {{predicate}}; reverse = {{reverse}}</pre>
+
+<div ng-controller="MainCtrl">
   <hr/>
   [ <a href="" ng-click="predicate=''">unsorted</a> ]
   <table class="studentList">
     <tr>
-      <th><a href="" ng-click="predicate = 'lastName'; reverse=false">Last Name</a>
-        (<a href="" ng-click="predicate = '-lastName'; reverse=false">^</a>)</th>
-      <th><a href="" ng-click="predicate = 'firstName'; reverse=false">First Name</a>
-        (<a href="" ng-click="predicate = '-firstName'; reverse=false">^</a>)</th>
-      <th><a href="" ng-click="predicate = 'email'; reverse=!reverse">email</a></th>
-      <th><a href="" ng-click="predicate = 'dateOfBirth'; reverse=!reverse">Date of Birth</a></th>
-      <!--<th><a href="" ng-click="predicate = 'credits'; reverse=!reverse">Number of Credits Completed</a></th>-->
-      <th><a href="" ng-click="predicate = 'major1'; reverse=!reverse">First Major</a></th>
-      <th><a href="" ng-click="predicate = 'major2'; reverse=!reverse">Second Major</a></th>
-      <!--<th><a href="" ng-click="predicate = 'course'; reverse=!reverse">Courses</a></th>-->
-      <!--<th><a href="" ng-click="predicate = 'GPA'; reverse=!reverse">GPA</a></th>-->
-      <!--<th><a href="" ng-click="predicate = 'gradeYear'; reverse=!reverse">Year</a></th>-->
+      <th><a href="" ng-click="reverse =false;order('lastName', false)">Last Name</a>
+        (<a href="" ng-click="order('-lastName', false)">^</a>)</th>
+      <th><a href="" ng-click="reverse = false; order('firstName', false)">First Name</a>
+        (<a href="" ng-click="order('-firstName', false)">^</a>)</th>
+      <th><a href="" ng-click="reverse =false;order('email', false)">email</a></th>
+      <th><a href="" ng-click="reverse =false;order('dateOfBirth', false)">Date of Birth</a></th>
+      <!--<th><a href="" ng-click="reverse =false;order('credits', false)">Number of Credits Completed</a></th>-->
+      <th><a href="" ng-click="reverse =false;order('major1', false)">First Major</a></th>
+      <th><a href="" ng-click="reverse =false;order('major2', false)">Second Major</a></th>
+      <!--<th><a href="" ng-click="reverse =false;order('course', false)">Courses</a></th>-->
+      <!--<th><a href="" ng-click="reverse =false;order('GPA', false)">GPA</a></th>-->
+      <!--<th><a href="" ng-click="reverse =false;order('gradeYear', false)">Year</a></th>-->
 <!--phone number and gender and address-->
     </tr>
-    <tr ng-repeat="student in data | orderBy:predicate:reverse">
-      <td>{{data.lastName}}</td>
-      <td>{{data.firstName}}</td>
-      <td>{{data.email}}</td>
-      <td>{{data.dateOfBirth}}</td>
-      <td>{{data.major1}}</td>
-      <td>{{data.major2}}</td>
+    <tr ng-repeat="student in localData">
+      <td>{{student.lastName}}</td>
+      <td>{{student.firstName}}</td>
+      <td>{{student.email}}</td>
+      <td>{{student.dateOfBirth}}</td>
+      <!--<td>{{data.credits}}</td>-->
+      <td>{{student.major1}}</td>
+      <td>{{student.major2}}</td>
+      <!--<td>{{data.course}}</td>-->
+      <!--<td>{{data.GPA}}</td>-->
+      <!--<td>{{data.gradeYear}}</td>-->
     </tr>
   </table>
 </div>
