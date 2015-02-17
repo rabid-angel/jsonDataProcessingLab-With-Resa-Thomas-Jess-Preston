@@ -23,68 +23,6 @@ describe('Controller: MainCtrl', function () {
   }));
 
 
-
-
-  //////////Student's for Testing//////////
-  var theOneClassAStudent = {
-    "firstName": "Love",
-    "lastName": "Roberts",
-    "dateOfBirth": "1989-01-18",
-    "gender": "male",
-    "email": "loveroberts@eweville.com",
-    "phone": "+1 (875) 519-3316",
-    "address": "562 Eastern Parkway, Crayne, Virginia, 5152",
-    "courses": [
-      {
-        "course": {
-          "name": "Models of Computing Systems",
-          "subject": "CSCI",
-          "courseNumber": 3401,
-          "credits": 4
-        },
-        "grade": "A"
-      }]};
-
-  var theTwoClassStudent = {
-    "firstName": "Love",
-    "lastName": "Roberts",
-    "dateOfBirth": "1989-01-18",
-    "gender": "male",
-    "email": "loveroberts@eweville.com",
-    "phone": "+1 (875) 519-3316",
-    "address": "562 Eastern Parkway, Crayne, Virginia, 5152",
-    "courses": [
-      {
-        "course": {
-          "name": "Models of Computing Systems",
-          "subject": "CSCI",
-          "courseNumber": 3401,
-          "credits": 4
-        },
-        "grade": "A"
-      },
-      {
-        "course": {
-          "name": "Software Design and Development",
-          "subject": "CSCI",
-          "courseNumber": 3601,
-          "credits": 4
-        },
-        "grade": "D"
-      }]};
-
-
-
-
-  /////////////////////////////////////////
-
-
-
-
- // it('should calculate a students GPA based on their class grades and class credits', function () {
- //   expect(scope.calculateGPA()).toBe(4);
- // });
-
   it('should convert a grade letter to a credit value', function () {
     expect(scope.letterToNum("A")).toBe(4);
     expect(scope.letterToNum("B")).toBe(3);
@@ -99,17 +37,60 @@ describe('Controller: MainCtrl', function () {
     expect(scope.letterToNum("f")).toBe(0);
   });
 
+
+
 //Tests for CalculateGPA
-
-  //These tests are taking in student arrays that were defined at the top of the page
   it('these results should yield 4.0', function(){
-
+    var theOneClassAStudent = {
+      "firstName": "Love",
+      "lastName": "Roberts",
+      "dateOfBirth": "1989-01-18",
+      "gender": "male",
+      "email": "loveroberts@eweville.com",
+      "phone": "+1 (875) 519-3316",
+      "address": "562 Eastern Parkway, Crayne, Virginia, 5152",
+      "courses": [
+        {
+          "course": {
+            "name": "Models of Computing Systems",
+            "subject": "CSCI",
+            "courseNumber": 3401,
+            "credits": 4
+          },
+          "grade": "A"
+        }]};
     expect(scope.calculateGPA(theOneClassAStudent)).toBeCloseTo(4.0, 2); // This makes sure we have 2 decimal points of precision.
   })
 
   it('these results should yield 2.0', function(){
-
-    expect(scope.calculateGPA(theTwoClassStudent)).toBeCloseTo(2, 2);
+    var theTwoClassStudent = {
+      "firstName": "Love",
+      "lastName": "Roberts",
+      "dateOfBirth": "1989-01-18",
+      "gender": "male",
+      "email": "loveroberts@eweville.com",
+      "phone": "+1 (875) 519-3316",
+      "address": "562 Eastern Parkway, Crayne, Virginia, 5152",
+      "courses": [
+        {
+          "course": {
+            "name": "Models of Computing Systems",
+            "subject": "CSCI",
+            "courseNumber": 3401,
+            "credits": 4
+          },
+          "grade": "A"
+        },
+        {
+          "course": {
+            "name": "Software Design and Development",
+            "subject": "CSCI",
+            "courseNumber": 3601,
+            "credits": 4
+          },
+          "grade": "D"
+        }]};
+    expect(scope.calculateGPA(theTwoClassStudent)).toBeCloseTo(2.5, 2);
   })
 
 });

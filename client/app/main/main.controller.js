@@ -1,18 +1,22 @@
 'use strict';
 
 angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl',[$scope, $filter, function ($scope, $filter, $http, socket) {
+    var orderBy = $filter('orderBy');
     $scope.awesomeThings = [];
-    $scope.localData = [];
-
+    $scope.data = [];
+    $scope.order = function(predicate, reverse){
+      $scope.data = orderBy($scope.data, predicate, reverse);
+    };
+    $scope.order('lastName', false);
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
       socket.syncUpdates('thing', $scope.awesomeThings);
     });
 
+
     $scope.addThing = function() {
       if($scope.newThing === '') {
-        return;
       }
       $http.post('/api/things', { name: $scope.newThing });
       $scope.newThing = '';
@@ -35,8 +39,10 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
 //////
 
     $scope.calculateGPA = function(student){
+      console.log("We Got Here");
+    //  student = student.toJSON();
      var studentCourses = student.courses;
-      if (array.length == 0) {
+      if (studentCourses.length == 0) {
         return 0;
       }
       var pointsEarned = 0;
@@ -67,4 +73,4 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
 
 
 
-  });
+  }]);
