@@ -2,8 +2,8 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+    <h1>Student Database</h1>
+    <p class="lead">Helping you creep on your students since 2015!</p>
     <img src="assets/images/yeoman.png" alt="I'm Yeoman">
   </div>
 </header>
@@ -17,26 +17,64 @@
       </ul>
     </div>
   </div>
-
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
 </div>
-<table>
-  <th>Last Name</th><th>First Name</th><th>Email</th><th>Birth Date</th><th>Number of Credits</th><th>Major(s)</th><th>Courses</th><th>GPA</th><th>Grade Level</th><!--<th>Failed Courses included</th>-->
-  <tr ng-repeat="test in data | filter:query | orderBy: ['lastName', 'firstName']"><!--{{$index + 1}}--><td>{{test.lastName}}</td> <td>{{test.firstName}}</td><td>{{test.email}}</td> <td>{{test.dateOfBirth}}</td> <td>{{"Lets Calculate Credits Here"}}</td><td>{{"Put some Majors Here"}}</td><td>{{"Resolve Course Stuff"}}</td><td>{{"Calculate their GPA"}}</td><td>{{"Calculate their Grade Level"}}</td></tr>
-</table>
-  <!--https://docs.angularjs.org/api/ng/filter/orderBy, http://fdietz.github.io/recipes-with-angular-js/common-user-interface-patterns/filtering-and-sorting-a-list.html-->
-<footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
-  </div>
+
+  <!--<form class="thing-form">-->
+    <!--<label>Syncs in realtime across clients</label>-->
+    <!--<p class="input-group">-->
+      <!--<input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">-->
+      <!--<span class="input-group-btn">-->
+        <!--<button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>-->
+      <!--</span>-->
+    <!--</p>-->
+  <!--</form>-->
+<!--</div>-->
+
+
+
+<div ng-controller="MainCtrl">
+  <hr/>
+  [ <a href="" ng-click="predicate=''">unsorted</a> ]
+  <table class="studentList">
+    <tr>
+      <th><a href="" ng-click="reverse =false;order('lastName', false)">Last Name</a>
+        (<a href="" ng-click="order('-lastName', false)">^</a>)</th>
+      <th><a href="" ng-click="reverse = false; order('firstName', false)">First Name</a>
+        (<a href="" ng-click="order('-firstName', false)">^</a>)</th>
+      <th><a href="" ng-click="reverse =false;order('email', false)">email</a></th>
+      <th><a href="" ng-click="reverse =false;order('dateOfBirth', false)">Date of Birth</a></th>
+      <!--<th><a href="" ng-click="reverse =false;order('credits', false)">Number of Credits Completed</a></th>-->
+      <th><a href="" ng-click="reverse =false;order('major1', false)">First Major</a></th>
+      <th><a href="" ng-click="reverse =false;order('major2', false)">Second Major</a></th>
+      <!--<th><a href="" ng-click="reverse =false;order('course', false)">Courses</a></th>-->
+      <!--<th><a href="" ng-click="reverse =false;order('GPA', false)">GPA</a></th>-->
+      <!--<th><a href="" ng-click="reverse =false;order('gradeYear', false)">Year</a></th>-->
+<!--phone number and gender and address-->
+    </tr>
+    <tr ng-repeat="student in localData">
+      <td>{{student.lastName}}</td>
+      <td>{{student.firstName}}</td>
+      <td>{{student.email}}</td>
+      <td>{{student.dateOfBirth}}</td>
+      <!--<td>{{data.credits}}</td>-->
+      <td>{{student.major1}}</td>
+      <td>{{student.major2}}</td>
+      <!--<td>{{data.course}}</td>-->
+      <!--<td>{{data.GPA}}</td>-->
+      <!--<td>{{data.gradeYear}}</td>-->
+    </tr>
+  </table>
+</div>
+
+<!--<table>-->
+  <!--<th>Last Name</th><th>First Name</th><th>Email</th><th>Birth Date</th><th>Number of Credits</th><th>Major(s)</th><th>Courses</th><th>GPA</th><th>Grade Level</th>&lt;!&ndash;<th>Failed Courses included</th>&ndash;&gt;-->
+  <!--<tr ng-repeat="test in data | filter:query | orderBy: predicate"><td>{{test.lastName}}</td> <td>{{test.firstName}}</td><td>{{test.email}}</td> <td>{{test.dateOfBirth}}</td> <td>{{"Lets Calculate Credits Here"}}</td><td>{{"Put some Majors Here"}}</td><td>{{"Resolve Course Stuff"}}</td><td>{{"Calculate their GPA"}}</td><td>{{"Calculate their Grade Level"}}</td></tr>-->
+<!--</table>-->
+  <!--&lt;!&ndash;https://docs.angularjs.org/api/ng/filter/orderBy, http://fdietz.github.io/recipes-with-angular-js/common-user-interface-patterns/filtering-and-sorting-a-list.html&ndash;&gt;-->
+<!--<footer class="footer">-->
+  <!--<div class="container">-->
+      <!--<p>Angular Fullstack v2.0.13 |-->
+        <!--<a href="https://twitter.com/tyhenkel">@tyhenkel</a> |-->
+         <!--<a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>-->
+  <!--</div>-->
 </footer>
