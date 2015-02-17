@@ -27,6 +27,14 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
       return pointsEarned/totalCredits;
     }
 
+    $scope.getIndividual = function(){
+      var id = document.location.search
+      id = id.split("=");
+      id = id[1]; //since we want what's after the first =
+      return $scope.data[id];
+
+    }
+
     $scope.letterToNum = function(letter){
       letter = letter.toUpperCase();
       switch(letter) {
