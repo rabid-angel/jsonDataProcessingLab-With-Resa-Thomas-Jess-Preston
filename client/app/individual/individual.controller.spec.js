@@ -41,5 +41,14 @@ describe('Controller: IndividualCtrl', function () {
     expect(scope.letterToNum("f")).toBe(0);
   });
 
+  it('should be Math', function(){
+    scope.individual = {major1: "Math", major2: null}
+    expect(scope.getMajors()).toBe("Math");
+  });
+
+  it('should be Math, English', function(){
+    scope.individual = {major1: "Math", major2: "English"}
+    expect(scope.getMajors()).toBe("Math, English");
+  });
 
 });

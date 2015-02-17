@@ -3,6 +3,8 @@
 angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
   .controller('IndividualCtrl', function ($scope, $http, socket) {
     $scope.data = [];
+    $scope.individual = null;
+    $scope.validStudent = false;
 
 ///
     $scope.getStudents = function() {
@@ -28,11 +30,19 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
     }
 
     $scope.getIndividual = function(){
-      var id = document.location.search
+      var id = document.location.search;
       id = id.split("=");
       id = id[1]; //since we want what's after the first =
-      return $scope.data[id];
-
+      $scope.individual = $scope.data[id];
+      if(0 < id && id < $scope.data.length){
+        $scope.validStudent = true;
+      }
+    }
+    $scope.getMajors = function(){
+      if($scope.individual.major2 !== null ){
+        return $scope.individual.major1+", "+$scope.individual.major2;
+      }
+      return $scope.individual.major1;
     }
 
     $scope.letterToNum = function(letter){

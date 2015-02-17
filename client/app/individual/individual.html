@@ -1,6 +1,18 @@
 
 <div>{{ getIndividual() }}</div>
-<table>
-  <th>Last Name</th><th>First Name</th><th>Email</th><th>Birth Date</th><th>Number of Credits</th><th>Major(s)</th><th>Courses</th><th>GPA</th><th>Grade Level</th><!--<th>Failed Courses included</th>-->
-  <tr ng-repeat="test in data | filter:query | orderBy: ['lastName', 'firstName']"><!--{{$index + 1}}--><td>{{test.lastName}}</td> <td>{{test.firstName}}</td><td>{{test.email}}</td> <td>{{test.dateOfBirth}}</td> <td>{{"Lets Calculate Credits Here"}}</td><td>{{"Put some Majors Here"}}</td><td>{{"Resolve Course Stuff"}}</td><td>{{"Calculate their GPA"}}</td><td>{{"Calculate their Grade Level"}}</td></tr>
-</table>
+<div ng-show="validStudent">
+  <span>Last Name:{{individual.lastName}}</span>
+  <span>First Name:{{individual.firstName}}</span>
+  <span>Date of Birth:{{individual.dateOfBirth}}</span>
+  <span>Gender:{{individual.gender}}</span>
+  <span>Email:{{individual.email}}</span>
+  <span>Phone:{{individual.phone}}</span>
+  <span>Address:{{individual.address}}</span>
+  <span>Majors:{{getMajors()}}</span>
+  <table>
+    <th>Last Name</th><th>First Name</th><th>Email</th><th>Birth Date</th><th>Number of Credits</th><th>Major(s)</th><th>Courses</th><th>GPA</th><th>Grade Level</th><!--<th>Failed Courses included</th>-->
+    <tr ng-repeat="test in data | filter:query | orderBy: ['lastName', 'firstName']"><!--{{$index + 1}}--><td>{{test.lastName}}</td> <td>{{test.firstName}}</td><td>{{test.email}}</td> <td>{{test.dateOfBirth}}</td> <td>{{"Lets Calculate Credits Here"}}</td><td>{{"Put some Majors Here"}}</td><td>{{"Resolve Course Stuff"}}</td><td>{{"Calculate their GPA"}}</td><td>{{"Calculate their Grade Level"}}</td></tr>
+  </table>
+</div>
+<div ng-hide="validStudent">No student found</div>
+
