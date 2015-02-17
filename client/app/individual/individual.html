@@ -1,14 +1,16 @@
 
-<div>{{ getIndividual() }}</div>
+<span><a href="/">Go Back</a>{{ getIndividual() }}</span>
 <div ng-show="validStudent">
-  <span>Last Name:{{individual.lastName}}</span>
-  <span>First Name:{{individual.firstName}}</span>
-  <span>Date of Birth:{{individual.dateOfBirth}}</span>
-  <span>Gender:{{individual.gender}}</span>
-  <span>Email:{{individual.email}}</span>
-  <span>Phone:{{individual.phone}}</span>
-  <span>Address:{{individual.address}}</span>
-  <span>Majors:{{getMajors()}}</span>
+  <p>Last Name: {{individual.lastName}}</p>
+  <p>First Name: {{individual.firstName}}</p>
+  <p>Date of Birth: {{individual.dateOfBirth | date : fullDate}}</p>
+  <p>Gender: {{individual.gender}}</p>
+  <p>Email: {{individual.email}}</p>
+  <p>Phone: {{individual.phone}}</p>
+  <p>Address: {{individual.address}}</p>
+  <p>Majors: {{getMajors()}}</p>
+  <p>Grade Level: {{"Get This"}}</p>
+  <p>GPA: {{"Get This"}}</p>
   <table>
     <th>Class</th><th>Subject</th><th>Course Number</th><th>Credits</th><th>Grade</th>
     <tr ng-repeat="course in individual.courses">
