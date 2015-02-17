@@ -1,18 +1,22 @@
 'use strict';
 
 angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl',[$scope, $filter, function ($scope, $filter, $http, socket) {
+    var orderBy = $filter('orderBy');
     $scope.awesomeThings = [];
     $scope.data = [];
-
+    $scope.order = function(predicate, reverse){
+      $scope.data = orderBy($scope.data, predicate, reverse);
+    };
+    $scope.order('lastName', false);
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
       socket.syncUpdates('thing', $scope.awesomeThings);
     });
 
+
     $scope.addThing = function() {
       if($scope.newThing === '') {
-        return;
       }
       $http.post('/api/things', { name: $scope.newThing });
       $scope.newThing = '';
@@ -25,25 +29,28 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
-///
+//////
     $scope.getStudents = function() {
       $http.get('/api/student').success(function (student) {
-        $scope.data = student;
+        $scope.localData = student;
       });
     };
     $scope.getStudents();
-///
+//////
 
     $scope.calculateGPA = function(student){
-      if (array.length == 0) {
+      console.log("We Got Here");
+    //  student = student.toJSON();
+     var studentCourses = student.courses;
+      if (studentCourses.length == 0) {
         return 0;
       }
       var pointsEarned = 0;
       var totalCredits = 0;
-      for (var index = 0; index < student.courses.length; index++) {
-        var course = student[index];
-        pointsEarned += course.credits * $scope.letterToNum(course.grade);
-        totalCredits += course.credits;
+      for (var index = 0; index < studentCourses.length; index++) {
+        var courseInList = studentCourses[index];
+        pointsEarned += courseInList.course.credits * $scope.letterToNum(courseInList.grade);
+        totalCredits += courseInList.course.credits;
       }
       return pointsEarned/totalCredits;
     }
@@ -64,4 +71,6 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
       }
     }
 
-  });
+
+
+  }]);
