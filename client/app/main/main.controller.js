@@ -122,7 +122,7 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
 
     $scope.addGradeYear = function(){
       for(var i=0; i<$scope.localData.length; i++){
-        $scope.localData[i].gradeYear = $scope.getGradeYear($scope.localData[i]);
+        $scope.localData[i].gradeYear = $scope.getGradeYear($scope.localData[i].completedCredits);
       }
     };
 
