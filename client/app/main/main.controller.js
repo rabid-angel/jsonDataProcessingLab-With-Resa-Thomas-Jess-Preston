@@ -36,6 +36,7 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
         $scope.addGPA();
         $scope.addCredits();
         $scope.addGradeYear();
+        $scope.addId();
         console.log($scope.localData);
       });
     };
@@ -51,7 +52,7 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
       }
       var pointsEarned = 0;
       var totalCredits = 0;
-      for (var index = 0; index < studentCourses.length; index++) {
+      for (var index = 0; index < studentCourses.len$scope.addIdgth; index++) {
         var courseInList = studentCourses[index];
         pointsEarned += courseInList.course.credits * $scope.letterToNum(courseInList.grade);
         totalCredits += courseInList.course.credits;
@@ -72,8 +73,12 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
           return 2.0;
         case "D":
           return 1.0;
-        default:
-          return 0.0;
+        default:$scope.addId
+          return 0.0;$scope.addGradeYear = function(){
+      for(var i=0; i<$scope.localData.length; i++){
+        $scope.localData[i].gradeYear = $scope.getGradeYear($scope.localData[i].completedCredits);
+      }
+    };
       }
     }
 
@@ -125,6 +130,14 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
         $scope.localData[i].gradeYear = $scope.getGradeYear($scope.localData[i].completedCredits);
       }
     };
+    $scope.addId = function(){
+      for(var i=0; i<$scope.localData.length; i++){
+        $scope.localData[i].id = i;
+      }
+    };
 
+    $scope.showIndividual = function(index) {
+      window.location = '/individual?id=' + (index+1);
+    };
 
   }]);

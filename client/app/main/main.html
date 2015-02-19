@@ -35,6 +35,7 @@
   <hr/>
   <p class="page-header">Carrots will sort in reverse order.</p>
   [ <a href="" ng-click="predicate=''">unsorted</a> ]
+  <input type="text" ng-model="searchText"/>
   <table class="studentList">
     <tr>
       <th><a href="" ng-click="reverse =false;order('lastName', false)">Last Name</a>
@@ -52,8 +53,8 @@
       <th><a href="" ng-click="reverse =false;order('gradeYear', false)">Year</a></th>
 <!--phone number and gender and address-->
     </tr>
-    <tr ng-repeat="student in localData">
-      <td>{{student.lastName}}</td>
+    <tr ng-repeat="student in localData | filter:searchText" >
+      <td><a href="/individual?id={{student.id}}">{{student.lastName}}</a></td>
       <td>{{student.firstName}}</td>
       <td>{{student.email}}</td>
       <td>{{student.dateOfBirth | date : fullDate}}</td>

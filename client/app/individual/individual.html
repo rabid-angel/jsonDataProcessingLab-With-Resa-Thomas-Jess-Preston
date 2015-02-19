@@ -9,8 +9,9 @@
   <p>Phone: {{individual.phone}}</p>
   <p>Address: {{individual.address}}</p>
   <p>Majors: {{getMajors()}}</p>
-  <p>Grade Level: {{"Get This"}}</p>
-  <p>GPA: {{"Get This"}}</p>
+  <p>Grade Level: {{individual.gradeYear}}</p>
+  <p>GPA: {{individual.GPA}}</p>
+  <p>Number of credits: {{individual.completedCredits}}</p>
   <table>
     <th>Class</th><th>Subject</th><th>Course Number</th><th>Credits</th><th>Grade</th>
     <tr ng-repeat="course in individual.courses">
