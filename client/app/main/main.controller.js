@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
-  .controller('MainCtrl',['$scope', '$filter','$http', function ($scope, $filter, $http, socket) {
+  .controller('MainCtrl',['$scope', '$filter', '$http', function ($scope, $filter, $http, socket) {
     var orderBy = $filter('orderBy');
     $scope.awesomeThings = [];
     $scope.localData = [];
@@ -55,6 +55,8 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
       return pointsEarned/totalCredits;
     }
 
+
+
     $scope.letterToNum = function(letter){
       letter = letter.toUpperCase();
       switch(letter) {
@@ -71,6 +73,32 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
       }
     }
 
+    $scope.calculateNumberOfCredits = function(student){
+      var studentCourses = student.courses;
+      if (studentCourses.length == 0) {
+        return 0;
+      }
+      var totalCredits = 0;
+      for (var index = 0; index < studentCourses.length; index++) {
+        var courseInList = studentCourses[index];
+        totalCredits += courseInList.course.credits;
+      }
+      return totalCredits;
+    }
 
+  $scope.getGradeYear = function(credits){
+      if(credits < 0){
+        return "Impossible Amount of Credits";
+      }
+       if(credits < 30) {
+         return "Freshman";
+       }else if( credits < 60) {
+         return "Sophomore";
+       }else if(credits < 90) {
+         return "Junior";
+       }else{
+         return "Senior";
+       }
+    }
 
   }]);
