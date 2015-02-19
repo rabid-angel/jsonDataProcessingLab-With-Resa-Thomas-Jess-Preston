@@ -56,7 +56,7 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
         pointsEarned += courseInList.course.credits * $scope.letterToNum(courseInList.grade);
         totalCredits += courseInList.course.credits;
       }
-      return pointsEarned/totalCredits;
+      return (pointsEarned/totalCredits).toFixed(3);
     }
 
 
@@ -89,7 +89,7 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
           totalCredits += courseInList.course.credits;
         }
       }
-      return totalCredits;
+      return (totalCredits);
     }
 
   $scope.getGradeYear = function(credits){
