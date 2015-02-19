@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
+      <!--<h1 class="page-header">Features:</h1>-->
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
         <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
       </ul>
@@ -43,11 +43,11 @@
         (<a href="" ng-click="order('-firstName', false)">^</a>)</th>
       <th><a href="" ng-click="reverse =false;order('email', false)">email</a></th>
       <th><a href="" ng-click="reverse =false;order('dateOfBirth', false)">Date of Birth</a></th>
-      <!--<th><a href="" ng-click="reverse =false;order('credits', false)">Number of Credits Completed</a></th>-->
+      <th><a href="" ng-click="reverse =false;order('completedCredits', false)">Number of Credits Completed</a></th>
       <th><a href="" ng-click="reverse =false;order('major1', false)">First Major</a></th>
       <th><a href="" ng-click="reverse =false;order('major2', false)">Second Major</a></th>
       <!--<th><a href="" ng-click="reverse =false;order('course', false)">Courses</a></th>-->
-      <!--<th><a href="" ng-click="reverse =false;order('GPA', false)">GPA</a></th>-->
+      <th><a href="" ng-click="reverse =false;order('GPA', false)">Current GPA</a></th>
       <!--<th><a href="" ng-click="reverse =false;order('gradeYear', false)">Year</a></th>-->
 <!--phone number and gender and address-->
     </tr>
@@ -56,11 +56,11 @@
       <td>{{student.firstName}}</td>
       <td>{{student.email}}</td>
       <td>{{student.dateOfBirth | date : fullDate}}</td>
-      <!--<td>{{data.credits}}</td>-->
+      <td>{{student.completedCredits}}</td>
       <td>{{student.major1}}</td>
       <td>{{student.major2}}</td>
       <!--<td>{{data.course}}</td>-->
-      <!--<td>{{data.GPA}}</td>-->
+      <td>{{student.GPA}}</td>
       <!--<td>{{data.gradeYear}}</td>-->
     </tr>
   </table>

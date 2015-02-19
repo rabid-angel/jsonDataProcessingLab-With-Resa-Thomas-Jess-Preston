@@ -34,6 +34,8 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
       $http.get('/api/student').success(function (student) {
         $scope.localData = student;
         $scope.addGPA();
+        $scope.addCredits();
+        console.log($scope.localData);
       });
     };
     $scope.getStudents();
@@ -105,17 +107,17 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
     }
 
     $scope.addGPA = function(){
-      for(var i=0; i<localData.length; i++){
-        localData[i].GPA = calculateGPA(localData[i]);
+      for(var i=0; i<$scope.localData.length; i++){
+        $scope.localData[i].GPA = $scope.calculateGPA($scope.localData[i]);
       }
     };
 
 
-    //$scope.addCredits = function(){
-    //  for(i=0; i<localData.length; i++){
-    //    localData[i].completedCredits = (localData[i]);
-    //  }
-    //};
-    //$scope.addCredits();
+    $scope.addCredits = function(){
+      for(var i=0; i<$scope.localData.length; i++){
+        $scope.localData[i].completedCredits = $scope.calculateNumberOfCredits($scope.localData[i]);
+      }
+    };
+
 
   }]);
