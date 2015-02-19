@@ -101,4 +101,18 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
        }
     }
 
+    $scope.addGPA = function(){
+      for(i=0; i<localData.length; i++){
+        localData[i].GPA = calculateGPA(localData[i]);
+      }
+    };
+    $scope.addGPA();
+
+    //$scope.addCredits = function(){
+    //  for(i=0; i<localData.length; i++){
+    //    localData[i].completedCredits = (localData[i]);
+    //  }
+    //};
+    //$scope.addCredits();
+
   }]);
