@@ -151,6 +151,38 @@ describe('Controller: MainCtrl', function () {
     expect(scope.calculateNumberOfCredits(theTwoClassStudent)).toBeCloseTo(8, 2);
   })
 
+  it('these results should yield 8', function () {
+    var theTwoClassStudent = {
+      "firstName": "Love",
+      "lastName": "Roberts",
+      "dateOfBirth": "1989-01-18",
+      "gender": "male",
+      "email": "loveroberts@eweville.com",
+      "phone": "+1 (875) 519-3316",
+      "address": "562 Eastern Parkway, Crayne, Virginia, 5152",
+      "courses": [
+        {
+          "course": {
+            "name": "Models of Computing Systems",
+            "subject": "CSCI",
+            "courseNumber": 3401,
+            "credits": 4
+          },
+          "grade": "F"
+        },
+        {
+          "course": {
+            "name": "Software Design and Development",
+            "subject": "CSCI",
+            "courseNumber": 3601,
+            "credits": 4
+          },
+          "grade": "IP"
+        }]
+    };
+    expect(scope.calculateNumberOfCredits(theTwoClassStudent)).toBeCloseTo(0, 2);
+  })
+
 
   it('these results should yield freshman', function () {
 
