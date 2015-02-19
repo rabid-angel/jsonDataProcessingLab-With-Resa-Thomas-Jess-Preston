@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
-  .controller('MainCtrl',[$scope, $filter, function ($scope, $filter, $http, socket) {
+  .controller('MainCtrl',['$scope', '$filter','$http', function ($scope, $filter, $http, socket) {
     var orderBy = $filter('orderBy');
     $scope.awesomeThings = [];
     $scope.localData = [];
