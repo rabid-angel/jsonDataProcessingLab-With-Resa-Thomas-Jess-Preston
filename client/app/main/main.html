@@ -47,8 +47,9 @@
       <th><a href="" ng-click="reverse =false;order('major1', false)">First Major</a></th>
       <th><a href="" ng-click="reverse =false;order('major2', false)">Second Major</a></th>
       <!--<th><a href="" ng-click="reverse =false;order('course', false)">Courses</a></th>-->
-      <th><a href="" ng-click="reverse =false;order('GPA', false)">Current GPA</a></th>
-      <!--<th><a href="" ng-click="reverse =false;order('gradeYear', false)">Year</a></th>-->
+      <th><a href="" ng-click="reverse =false;order('GPA', false)">Current GPA</a>
+        (<a href="" ng-click="order('-GPA', false)">^</a>)</th>
+      <th><a href="" ng-click="reverse =false;order('gradeYear', false)">Year</a></th>
 <!--phone number and gender and address-->
     </tr>
     <tr ng-repeat="student in localData">
@@ -61,7 +62,7 @@
       <td>{{student.major2}}</td>
       <!--<td>{{data.course}}</td>-->
       <td>{{student.GPA}}</td>
-      <!--<td>{{data.gradeYear}}</td>-->
+      <td>{{student.gradeYear}}</td>
     </tr>
   </table>
 </div>

@@ -35,6 +35,7 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
         $scope.localData = student;
         $scope.addGPA();
         $scope.addCredits();
+        $scope.addGradeYear();
         console.log($scope.localData);
       });
     };
@@ -116,6 +117,12 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
     $scope.addCredits = function(){
       for(var i=0; i<$scope.localData.length; i++){
         $scope.localData[i].completedCredits = $scope.calculateNumberOfCredits($scope.localData[i]);
+      }
+    };
+
+    $scope.addGradeYear = function(){
+      for(var i=0; i<$scope.localData.length; i++){
+        $scope.localData[i].gradeYear = $scope.getGradeYear($scope.localData[i]);
       }
     };
 
