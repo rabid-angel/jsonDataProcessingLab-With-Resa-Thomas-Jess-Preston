@@ -39,10 +39,11 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
       id = id.split("=");
       id = id[1]; //since we want what's after the first =
       $scope.individual = $scope.data[id];
-      if(0 < id && id < $scope.data.length){
+      if(-1 < id && id < $scope.data.length){
         $scope.validStudent = true;
       }
     }
+    $scope.getIndividual();
 
     $scope.getMajors = function(){
       if(angular.isDefined($scope.individual.major2) && $scope.individual.major2 !== null ){
@@ -136,11 +137,11 @@ angular.module('jsonDataProcessingLabWithResaThomasJessPrestonApp')
       }
     };
 
-    $scope.addId = function(){
-      for(var i=0; i<$scope.localData.length; i++){
-        $scope.localData[i].id = i;
-      }
-    };
+    //$scope.addId = function(){
+    //  for(var i=0; i<$scope.localData.length; i++){
+    //    $scope.localData[i].id = i+1;
+    //  }
+    //};
 
 
   });
